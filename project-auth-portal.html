@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auth & Role Management Portal | SJ PRAKASH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#0b1020; --surface:#131a2f; --text:#edf2ff; --muted:#9aa5c3; --primary:#6ea8ff; --border:rgba(255,255,255,.12);
+      --gradient:linear-gradient(135deg,#6ea8ff,#8d7dff 55%,#69eacb);
+    }
+    [data-theme="light"] {
+      --bg:#f5f8ff; --surface:#fff; --text:#101a33; --muted:#4d5f82; --primary:#255eff; --border:rgba(16,26,51,.12);
+      --gradient:linear-gradient(135deg,#255eff,#7a58ff 55%,#089f7a);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    .wrap{width:min(980px,92%);margin:60px auto}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px}
+    .label{font-size:12px;text-transform:uppercase;letter-spacing:1.8px;color:var(--primary);font-weight:700;margin-bottom:10px}
+    h1{font-family:Poppins,sans-serif;font-size:clamp(30px,4vw,46px);margin-bottom:10px}
+    p{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;margin-top:16px}
+    h3{margin-bottom:8px}
+    ul{padding-left:18px;color:var(--muted)}
+    li{margin-bottom:8px}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{font-size:12px;padding:5px 10px;border-radius:999px;background:rgba(110,168,255,.14);color:var(--primary);border:1px solid rgba(110,168,255,.3)}
+    .btn{display:inline-block;margin-top:16px;text-decoration:none;color:#fff;background:var(--gradient);padding:10px 14px;border-radius:10px;font-weight:600}
+    @media (max-width:780px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <p class="label">Project Detail</p>
+      <h1>Auth & Role Management Portal</h1>
+      <p>A secure identity and access management portal for teams and administrators.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Features</h3>
+          <ul>
+            <li>User onboarding and account lock controls</li><li>Role-permission matrix management</li><li>Secure token refresh flow</li><li>Audit history for admin actions</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Technologies Used</h3>
+          <div class="chips"><span class='chip'>.NET Core</span><span class='chip'>React</span><span class='chip'>MS SQL Server</span></div>
+          <a href="portfolio.html" class="btn">Back to Portfolio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

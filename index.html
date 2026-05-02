@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SJ PRAKASH - Full Stack Software Engineer Portfolio" />
+  <title>SJ PRAKASH | Full Stack Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --surface: #131a2f;
+      --card: #1a2340;
+      --text: #edf2ff;
+      --muted: #9aa5c3;
+      --primary: #6ea8ff;
+      --accent: #69eacb;
+      --border: rgba(255, 255, 255, 0.12);
+      --gradient: linear-gradient(135deg, #6ea8ff, #8d7dff 55%, #69eacb);
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    [data-theme="light"] {
+      --bg: #f5f8ff;
+      --surface: #ffffff;
+      --card: #f4f7ff;
+      --text: #101a33;
+      --muted: #4d5f82;
+      --primary: #255eff;
+      --accent: #089f7a;
+      --border: rgba(16, 26, 51, 0.12);
+      --gradient: linear-gradient(135deg, #255eff, #7a58ff 55%, #089f7a);
+      --shadow: 0 12px 30px rgba(30, 62, 120, 0.16);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at 15% 0%, rgba(110,168,255,0.12), transparent 30%), var(--bg);
+      line-height: 1.6;
+      transition: background .3s ease, color .3s ease;
+    }
+
+    .container { width: min(1140px, 92%); margin: 0 auto; }
+    .section { padding: 84px 0; }
+    .label { font-size: 12px; text-transform: uppercase; letter-spacing: 1.8px; color: var(--primary); font-weight: 700; margin-bottom: 10px; }
+    .title { font-family: "Poppins", sans-serif; font-size: clamp(28px, 4vw, 46px); margin-bottom: 12px; line-height: 1.2; }
+    .subtitle { color: var(--muted); max-width: 760px; }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 20;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+    }
+    .nav-inner {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      font-family: "Poppins", sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .brand span { background: var(--gradient); -webkit-background-clip: text; color: transparent; }
+
+    .nav-links { display: flex; gap: 16px; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 6px 8px;
+      border-radius: 8px;
+      transition: .2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+      background: color-mix(in srgb, var(--primary) 14%, transparent);
+    }
+
+    .theme-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      transition: .2s;
+    }
+    .theme-btn:hover { transform: translateY(-2px); }
+
+    .main { padding-top: 88px; }
+
+    .hero-grid {
+      min-height: calc(100vh - 88px);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 34px;
+    }
+    .hero-name { font-family: "Poppins", sans-serif; font-size: clamp(38px, 8vw, 74px); line-height: 1.05; }
+    .hero-name span { background: var(--gradient); -webkit-background-clip: text; color: transparent; }
+    .hero-role { font-size: clamp(20px, 3vw, 31px); font-weight: 700; margin-top: 6px; margin-bottom: 10px; }
+    .hero-tagline { font-size: 18px; color: var(--muted); margin-bottom: 24px; max-width: 640px; }
+
+    .btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+    .btn {
+      text-decoration: none;
+      border-radius: 12px;
+      padding: 12px 18px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: .2s;
+    }
+    .btn-primary { background: var(--gradient); color: #fff; }
+    .btn-outline { border-color: var(--border); color: var(--text); background: var(--surface); }
+    .btn-primary:hover, .btn-outline:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+
+    .stats { display: flex; gap: 26px; flex-wrap: wrap; }
+    .stat-number { font-family: "Poppins", sans-serif; font-size: 31px; color: var(--primary); line-height: 1; }
+    .stat-label { color: var(--muted); font-size: 13px; margin-top: 5px; }
+
+    .profile-box {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 16px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .profile-box img {
+      width: 100%;
+      border-radius: 14px;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border: 1px solid var(--border);
+    }
+
+    .about-grid,
+    .contact-grid,
+    .skills-grid,
+    .projects-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .about-grid,
+    .contact-grid { grid-template-columns: 1fr 1fr; }
+    .skills-grid { grid-template-columns: repeat(3, 1fr); margin-top: 24px; }
+    .projects-grid { grid-template-columns: repeat(3, 1fr); margin-top: 24px; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      transition: .25s;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+
+    .skill-group h3 { display: flex; align-items: center; gap: 10px; font-size: 19px; }
+    .skill-group h3 i { color: var(--primary); }
+    .skill-item { margin-top: 12px; }
+    .skill-row { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+    .track { height: 7px; background: color-mix(in srgb, var(--muted) 25%, transparent); border-radius: 99px; overflow: hidden; }
+    .fill { height: 100%; background: var(--gradient); border-radius: 99px; }
+
+    .project-card { text-decoration: none; color: inherit; }
+    .project-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .project-text { color: var(--muted); font-size: 14px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .chip {
+      font-size: 12px;
+      border-radius: 999px;
+      padding: 5px 10px;
+      border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
+      color: var(--primary);
+      background: color-mix(in srgb, var(--primary) 14%, transparent);
+    }
+
+    .timeline { margin-top: 22px; border-left: 2px solid color-mix(in srgb, var(--primary) 45%, var(--border)); padding-left: 18px; }
+    .timeline-item { position: relative; margin-bottom: 18px; }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--primary);
+      left: -24px;
+      top: 6px;
+    }
+    .time { color: var(--primary); font-size: 13px; font-weight: 700; }
+    .role { font-size: 19px; font-weight: 700; margin: 4px 0; }
+    .desc { color: var(--muted); font-size: 14px; }
+
+    .form { display: grid; gap: 12px; }
+    .input, textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--card);
+      color: var(--text);
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+    textarea { min-height: 120px; resize: vertical; }
+    .input:focus, textarea:focus { border-color: var(--primary); }
+
+    .socials { display: flex; gap: 10px; margin-top: 14px; }
+    .socials a {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      transition: .2s;
+      text-decoration: none;
+      background: var(--surface);
+    }
+    .socials a:hover { color: var(--primary); border-color: var(--primary); transform: translateY(-2px); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid { grid-template-columns: 1fr; }
+      .skills-grid,
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .section { padding: 66px 0; }
+      .skills-grid,
+      .projects-grid { grid-template-columns: 1fr; }
+      .hero-tagline { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand">SJ <span>PRAKASH</span></a>
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    </div>
+  </nav>
+
+  <main class="main">
+    <section id="home" class="section">
+      <div class="container hero-grid">
+        <div>
+          <p class="label">Full Stack Software Engineer</p>
+          <h1 class="hero-name">SJ <span>PRAKASH</span></h1>
+          <h2 class="hero-role">Building Scalable Web Applications with Clean and Efficient Code</h2>
+          <p class="hero-tagline">3 years 6 months of total experience (including internship), with 2.6 years of professional experience in building modern web applications.</p>
+          <div class="btn-row">
+            <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-code"></i>View Projects</a>
+            <a href="#contact" class="btn btn-outline"><i class="fa-regular fa-envelope"></i>Contact Me</a>
+          </div>
+          <div class="stats">
+            <div><div class="stat-number">3.6Y</div><div class="stat-label">Total Experience</div></div>
+            <div><div class="stat-number">2.6Y</div><div class="stat-label">Professional Experience</div></div>
+            <div><div class="stat-number">6</div><div class="stat-label">Projects</div></div>
+          </div>
+        </div>
+        <div class="profile-box">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80" alt="Profile placeholder" />
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container about-grid">
+        <div class="card">
+          <p class="label">About</p>
+          <h2 class="title">Problem-solving full stack engineer</h2>
+          <p class="subtitle">I design and build complete solutions across frontend and backend. My strengths are in .NET/.NET Core APIs, React-based interfaces, and SQL-driven data systems that are scalable and maintainable.</p>
+        </div>
+        <div class="card">
+          <p class="subtitle">I focus on clean architecture, reusable code, performance optimization, and user-friendly design. Every project is built with practical engineering standards and long-term maintainability in mind.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+        <p class="label">Skills</p>
+        <h2 class="title">Technical expertise</h2>
+        <p class="subtitle">Grouped by Frontend, Backend, and Database with clear proficiency indicators.</p>
+
+        <div class="skills-grid">
+          <div class="card skill-group">
+            <h3><i class="fa-solid fa-laptop-code"></i>Frontend</h3>
+            <div class="skill-item"><div class="skill-row"><span>JavaScript</span><span>92%</span></div><div class="track"><div class="fill" style="width:92%"></div></div></div>
+            <div class="skill-item"><div class="skill-row"><span>React</span><span>90%</span></div><div class="track"><div class="fill" style="width:90%"></div></div></div>
+            <div class="skill-item"><div class="skill-row"><span>HTML</span><span>95%</span></div><div class="track"><div class="fill" style="width:95%"></div></div></div>
+            <div class="skill-item"><div class="skill-row"><span>CSS</span><span>94%</span></div><div class="track"><div class="fill" style="width:94%"></div></div></div>
+          </div>
+
+          <div class="card skill-group">
+            <h3><i class="fa-solid fa-server"></i>Backend</h3>
+            <div class="skill-item"><div class="skill-row"><span>.NET</span><span>90%</span></div><div class="track"><div class="fill" style="width:90%"></div></div></div>
+            <div class="skill-item"><div class="skill-row"><span>.NET Core</span><span>91%</span></div><div class="track"><div class="fill" style="width:91%"></div></div></div>
+          </div>
+
+          <div class="card skill-group">
+            <h3><i class="fa-solid fa-database"></i>Database</h3>
+            <div class="skill-item"><div class="skill-row"><span>MS SQL Server</span><span>89%</span></div><div class="track"><div class="fill" style="width:89%"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <p class="label">Projects</p>
+        <h2 class="title">Featured work</h2>
+        <p class="subtitle">Click on each project to open its separate detail page.</p>
+
+        <div class="projects-grid">
+          <a class="card project-card" href="project-task-management.html"><h3 class="project-title">Task Management System</h3><p class="project-text">Kanban productivity app with role-based access and real-time task updates.</p><div class="chips"><span class="chip">React</span><span class="chip">.NET Core</span><span class="chip">MS SQL</span></div></a>
+          <a class="card project-card" href="project-inventory-analytics.html"><h3 class="project-title">Inventory Analytics API</h3><p class="project-text">Inventory and reporting backend service with optimized SQL query flows.</p><div class="chips"><span class="chip">.NET</span><span class="chip">MS SQL</span><span class="chip">Web API</span></div></a>
+          <a class="card project-card" href="project-weather-dashboard.html"><h3 class="project-title">Weather Intelligence Dashboard</h3><p class="project-text">Responsive dashboard with location-based forecast and dynamic UI cards.</p><div class="chips"><span class="chip">JavaScript</span><span class="chip">React</span><span class="chip">CSS</span></div></a>
+          <a class="card project-card" href="project-auth-portal.html"><h3 class="project-title">Auth & Role Management Portal</h3><p class="project-text">Secure authentication portal with permission matrix and audit tracking.</p><div class="chips"><span class="chip">.NET Core</span><span class="chip">React</span><span class="chip">MS SQL</span></div></a>
+          <a class="card project-card" href="project-ui-library.html"><h3 class="project-title">UI Component Suite</h3><p class="project-text">Reusable UI kit for forms, tables, modals, and design consistency.</p><div class="chips"><span class="chip">JavaScript</span><span class="chip">React</span><span class="chip">CSS</span></div></a>
+          <a class="card project-card" href="project-ecommerce-service.html"><h3 class="project-title">E-Commerce Order Service</h3><p class="project-text">Microservice-based order workflow with clean architecture principles.</p><div class="chips"><span class="chip">.NET Core</span><span class="chip">MS SQL</span><span class="chip">REST API</span></div></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="container">
+        <p class="label">Experience</p>
+        <h2 class="title">Career timeline</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="time">Professional Experience · 2.6 Years</div>
+            <div class="role">Full Stack Software Engineer</div>
+            <p class="desc">Developed scalable .NET/.NET Core APIs, modern frontend modules, and optimized MS SQL query performance for production applications.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="time">Internship Included in Total 3 Years 6 Months</div>
+            <div class="role">Software Engineer Intern</div>
+            <p class="desc">Supported frontend feature development, backend bug fixes, and database operations while learning full-cycle software delivery.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container contact-grid">
+        <div class="card">
+          <p class="label">Contact</p>
+          <h2 class="title" style="font-size:34px">Let us connect</h2>
+          <p class="subtitle">For job opportunities, collaborations, or freelance projects, send a message anytime.</p>
+          <div class="socials">
+            <a href="https://github.com/yourusername" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <form class="card form" id="contactForm">
+          <input class="input" type="text" placeholder="Name" required />
+          <input class="input" type="email" placeholder="Email" required />
+          <textarea placeholder="Message" required></textarea>
+          <button class="btn btn-primary" type="submit"><i class="fa-solid fa-paper-plane"></i>Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> SJ PRAKASH · Full Stack Software Engineer</div>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    root.setAttribute('data-theme', savedTheme);
+
+    function updateThemeIcon() {
+      const dark = root.getAttribute('data-theme') === 'dark';
+      themeBtn.innerHTML = dark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+    }
+    updateThemeIcon();
+
+    themeBtn.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateThemeIcon();
+    });
+
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function setActiveLink() {
+      let current = 'home';
+      sections.forEach((section) => {
+        if (window.scrollY >= section.offsetTop - 130) {
+          current = section.id;
+        }
+      });
+      navLinks.forEach((link) => {
+        const href = link.getAttribute('href').replace('#', '');
+        link.classList.toggle('active', href === current);
+      });
+    }
+
+    window.addEventListener('scroll', setActiveLink);
+    setActiveLink();
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Message sent successfully! You can connect via email or LinkedIn for now.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
